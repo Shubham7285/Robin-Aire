@@ -14,17 +14,13 @@ function get_latest_tag($repo, $token) {
     $response = file_get_contents($url, false, $context);
 
     if ($response === FALSE) {
-        // die("Error fetching tags for repository $repo");
-        error_log("Error fetching tags for repository $repo");
-        return '';
+        die("Error fetching tags for repository $repo");
     }
 
     $tags = json_decode($response, true);
 
     if (empty($tags)) {
-        // die("No tags found for repository $repo");
-        error_log("No tags found for repository $repo");
-        return '';
+        die("No tags found for repository $repo");
     }
 
     return $tags[0]['name']; // Return the latest tag (first in the list)
@@ -44,9 +40,7 @@ function download_and_prepare_plugin($repo, $tag, $token, $destination) {
     $response = file_get_contents($url, false, $context);
 
     if ($response === FALSE) {
-        // die("Error fetching archive for repository $repo");
-        error_log("Error fetching archive for repository $repo");
-        return '';
+        die("Error fetching archive for repository $repo");
     }
 
     $temp_tar_path = tempnam(sys_get_temp_dir(), 'tarball') . '.tar.gz';
@@ -61,9 +55,7 @@ function download_and_prepare_plugin($repo, $tag, $token, $destination) {
     // Create ZIP file
     $zip = new ZipArchive();
     if ($zip->open($destination, ZipArchive::CREATE) !== TRUE) {
-        // die("Error creating ZIP archive for repository $repo");
-        error_log("Error creating ZIP archive for repository $repo");
-        return '';
+        die("Error creating ZIP archive for repository $repo");
     }
 
     $files = new RecursiveIteratorIterator(

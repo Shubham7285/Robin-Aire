@@ -1,4 +1,4 @@
-<div class="d-block ss">
+<div class="d-block">
     <div class="container-fluid px-lg-3 px-0">
         <div class="container">
             <div class="row pt-2">

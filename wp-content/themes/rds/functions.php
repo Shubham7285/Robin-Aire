@@ -168,13 +168,13 @@ function rds_gravity_submit_button($button, $form)
 //Gravity Forms Button HTML End
 add_filter("use_widgets_block_editor", "__return_false");
 
-// add_rewrite_rule(
-//     '^careers/([^/]+)/?$',
+add_rewrite_rule(
+    '^careers/([^/]+)/?$',
 
-//     'index.php?job=$matches[1]',
+    'index.php?job=$matches[1]',
 
-//     "top"
-// );
+    "top"
+);
 
 add_filter(
     "post_type_link",
